@@ -26,7 +26,7 @@ namespace webapi.health.clinic.Domains
 
         [Column(TypeName = "DATE")]
         [Required(ErrorMessage = "A data de nascimento do usuário é obrigatório")]
-        public DateOnly BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         [Column(TypeName = "CHAR(11)")]
         [Required(ErrorMessage = "O número de telefone do usuário é obrigatório", AllowEmptyStrings = false)]

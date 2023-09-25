@@ -19,7 +19,7 @@ namespace webapi.health.clinic.Contexts
 
         // Connection String
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-           => optionsBuilder.UseSqlServer("Server = NOTE17-S14; Database = event_plus_auto; User Id = sa; Pwd = Senai@134; TrustServerCertificate = True");
+           => optionsBuilder.UseSqlServer("Server = NOTE17-S14; Database = health_clinic_db; User Id = sa; Pwd = Senai@134; TrustServerCertificate = True");
     }
 }
 
