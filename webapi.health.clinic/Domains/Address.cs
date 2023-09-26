@@ -24,8 +24,12 @@ namespace webapi.health.clinic.Domains
         public string? City { get; set; }
 
         [Column(TypeName = "VARCHAR(32)")]
-        [Required(ErrorMessage = "A cidade é um item obrigatório em um endereço")]
+        [Required(ErrorMessage = "O bairro é um item obrigatório em um endereço")]
         public string? Neighborhood  { get; set; }
+
+        [Column(TypeName = "VARCHAR(100)")]
+        [Required(ErrorMessage = "A rua é um item obrigatório em um endereço")]
+        public string? Street { get; set; }
 
         [Column(TypeName = "VARCHAR(5)")]
         [Required(ErrorMessage = "O número é um item obrigatório em um endereço")]
