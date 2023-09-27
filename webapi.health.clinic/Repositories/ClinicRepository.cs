@@ -36,7 +36,8 @@ namespace webapi.health.clinic.Repositories
                 Id = clinic.Id,
                 FancyName = clinic.FancyName,
                 CompanyName = clinic.CompanyName,
-                OpeningTime = clinic.ClosingTime,
+                OpeningTime = clinic.OpeningTime,
+                ClosingTime = clinic.ClosingTime,
                 Address = new Address
                 {
                     Id = clinic.Address.Id,
