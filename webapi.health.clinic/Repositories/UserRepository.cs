@@ -36,7 +36,19 @@ namespace webapi.health.clinic.Repositories
 
         public List<User> ListAll()
         {
-            throw new NotImplementedException();
+            return _context.Users.Select(user => new User
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                BirthDate = user.BirthDate.Date,
+                PhoneNumber = user.PhoneNumber,
+                SomeonePhoneNumber = user.SomeonePhoneNumber,
+                UserType = new UserType
+                {
+                    TypeName = user.UserType.TypeName
+                }
+            }).ToList();
         }
         public void Delete(Guid id)
         {
