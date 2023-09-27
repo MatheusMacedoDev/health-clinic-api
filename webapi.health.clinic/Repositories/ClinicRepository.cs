@@ -48,7 +48,19 @@ namespace webapi.health.clinic.Repositories
 
         public void Update(Clinic clinicNewData)
         {
-            throw new NotImplementedException();
+            Clinic findedClinic = GetByIdDefault(clinicNewData.Id);
+
+            if (findedClinic != null)
+            {
+                findedClinic.FancyName = clinicNewData.FancyName;
+                findedClinic.CompanyName = clinicNewData.CompanyName;
+                findedClinic.OpeningTime = clinicNewData.OpeningTime;
+                findedClinic.ClosingTime = clinicNewData.ClosingTime;
+                findedClinic.AddressId = clinicNewData.AddressId;
+
+                _context.Clinics.Update(findedClinic);
+                _context.SaveChanges();
+            }
         }
     }
 }

@@ -61,5 +61,20 @@ namespace webapi.health.clinic.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpPut]
+        public IActionResult Update(Clinic clinic)
+        {
+            try
+            {
+                _clinicRepository.Update(clinic);
+
+                return StatusCode(204, clinic);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }
