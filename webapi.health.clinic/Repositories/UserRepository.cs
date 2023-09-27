@@ -21,7 +21,17 @@ namespace webapi.health.clinic.Repositories
 
         public User GetByEmailAndPassword(string email, string password)
         {
-            throw new NotImplementedException();
+            User findedUser = _context.Users.FirstOrDefault(user => user.Email == email)!;
+
+            if (findedUser != null)
+            {
+                if (findedUser.Password == password)
+                {
+                    return findedUser;
+                }
+            }
+
+            return null!;
         }
 
         public List<User> ListAll()
