@@ -26,7 +26,19 @@ namespace webapi.health.clinic.Repositories
 
         public List<Clinic> ListAll()
         {
-            throw new NotImplementedException();
+            return _context.Clinics.Select(clinic => new Clinic
+            {
+                Id = clinic.Id,
+                FancyName = clinic.FancyName,
+                CompanyName = clinic.CompanyName,
+                OpeningTime = clinic.ClosingTime,
+                Address = new Address
+                {
+                    Id = clinic.Address.Id,
+                    Cep = clinic.Address.Cep,
+                    Number = clinic.Address.Number
+                }
+            }).ToList();
         }
 
         public void Update(Clinic clinicNewData)
