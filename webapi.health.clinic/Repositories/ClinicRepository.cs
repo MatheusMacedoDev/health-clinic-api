@@ -13,6 +13,8 @@ namespace webapi.health.clinic.Repositories
             _context = new HealthClinicContext();
         }
 
+        private Clinic GetByIdDefault(Guid id) => _context.Clinics.FirstOrDefault(clinic => clinic.Id == id)!;
+
         public void Create(Clinic clinic)
         {
             _context.Clinics.Add(clinic);
@@ -21,8 +23,11 @@ namespace webapi.health.clinic.Repositories
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            Clinic findedClinic = GetByIdDefault(id);
+            _context.Clinics.Remove(findedClinic);
+            _context.SaveChanges();
         }
+
 
         public List<Clinic> ListAll()
         {
