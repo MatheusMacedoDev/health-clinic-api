@@ -47,6 +47,21 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                Clinic clinic = _clinicRepository.GetByIdDefault(id);
+
+                return Ok(clinic);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
         [HttpDelete]
         public IActionResult Delete(Guid id)
         {

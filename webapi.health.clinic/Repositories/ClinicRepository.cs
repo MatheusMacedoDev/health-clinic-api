@@ -13,7 +13,7 @@ namespace webapi.health.clinic.Repositories
             _context = new HealthClinicContext();
         }
 
-        private Clinic GetByIdDefault(Guid id) => _context.Clinics.FirstOrDefault(clinic => clinic.Id == id)!;
+        public Clinic GetByIdDefault(Guid id) => _context.Clinics.FirstOrDefault(clinic => clinic.Id == id)!;
 
         public void Create(Clinic clinic)
         {

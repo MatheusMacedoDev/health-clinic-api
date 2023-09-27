@@ -6,6 +6,7 @@ namespace webapi.health.clinic.Interfaces
     {
         void Create(Clinic clinic);
         List<Clinic> ListAll();
+        Clinic GetByIdDefault(Guid id);
         void Update(Clinic clinicNewData);
         void Delete(Guid id);
     }
