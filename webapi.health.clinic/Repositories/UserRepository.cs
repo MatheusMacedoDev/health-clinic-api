@@ -52,7 +52,13 @@ namespace webapi.health.clinic.Repositories
         }
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            User findedUser = _context.Users.FirstOrDefault(user => user.Id == id)!;
+
+            if (findedUser != null)
+            {
+                _context.Users.Remove(findedUser);
+                _context.SaveChanges();
+            }
         }
     }
 }
