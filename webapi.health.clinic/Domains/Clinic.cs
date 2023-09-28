@@ -23,7 +23,7 @@ namespace webapi.health.clinic.Domains
         
         [Column(TypeName = "Time")]
         [Required(ErrorMessage = "O horário de fechamento da clínica é um item obrigatório")]
-        public TimeSpan ClosingTime { get; set; }
+        public TimeSpan ClosingTime { get; set; } 
 
         // Address Reference
 

@@ -19,6 +19,33 @@ namespace webapi.health.clinic.Repositories
             _context.SaveChanges();
         }
 
+        public List<ClinicPatient> GetPatientsByClinic(Guid clinicId)
+        {
+            return _context.ClinicPatients
+                .Select(clinicPatient => new ClinicPatient
+                {
+                    Id = clinicPatient.Id,
+                    ClinicId = clinicId,
+                    Clinic = new Clinic
+                    {
+                        Id = clinicPatient.ClinicId,
+                        FancyName = clinicPatient.Clinic.FancyName
+                    },
+                    PatientId = clinicPatient.PatientId,
+                    Patient = new Patient
+                    {
+                        Id = clinicPatient.Patient!.Id,
+                        User = new User()
+                        {
+                            Id = clinicPatient.Patient.User.Id,
+                            Name = clinicPatient.Patient.User.Name
+                        }
+                    }
+                })
+                .Where(clinicPatient => clinicPatient.ClinicId == clinicId)
+                .ToList();
+        }
+
         public void Delete(Guid id)
         {
             throw new NotImplementedException();
