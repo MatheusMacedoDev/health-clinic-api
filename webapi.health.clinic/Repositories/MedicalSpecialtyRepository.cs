@@ -42,7 +42,15 @@ namespace webapi.health.clinic.Repositories
 
         public void Update(MedicalSpecialty medicalSpecialty)
         {
-            throw new NotImplementedException();
+            MedicalSpecialty findedMedicalSpecialty = GetById(medicalSpecialty.Id);
+
+            if (findedMedicalSpecialty != null)
+            {
+                findedMedicalSpecialty.Name = medicalSpecialty.Name;
+
+                _context.MedicalSpecialties.Update(findedMedicalSpecialty);
+                _context.SaveChanges();
+            }
         }
     }
 }
