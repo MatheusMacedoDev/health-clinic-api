@@ -31,7 +31,7 @@ namespace webapi.health.clinic.Repositories
 
         public List<MedicalSpecialty> ListAll()
         {
-            throw new NotImplementedException();
+            return _context.MedicalSpecialties.ToList();
         }
 
         public void Update(MedicalSpecialty medicalSpecialty)

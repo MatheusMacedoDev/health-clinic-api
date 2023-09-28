@@ -31,5 +31,20 @@ namespace webapi.health.clinic.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpGet]
+        public IActionResult ListAll()
+        {
+            try
+            {
+                List<MedicalSpecialty> medicalSpecialties = _medicalSpecialtyRepository.ListAll();
+
+                return Ok(medicalSpecialties);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }
