@@ -48,7 +48,13 @@ namespace webapi.health.clinic.Repositories
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            ClinicPatient findedClinicPatient = _context.ClinicPatients.FirstOrDefault(cp => cp.Id == id)!;
+
+            if (findedClinicPatient != null)
+            {
+                _context.ClinicPatients.Remove(findedClinicPatient);
+                _context.SaveChanges();
+            }
         }
     }
 }
