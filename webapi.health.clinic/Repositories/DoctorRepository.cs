@@ -26,7 +26,17 @@ namespace webapi.health.clinic.Repositories
 
         public List<Doctor> ListAll()
         {
-            throw new NotImplementedException();
+            return _context.Doctors.Select(doctor => new Doctor
+            {
+                Id = doctor.Id,
+                CRM = doctor.CRM,
+                User = new User
+                {
+                    Id = doctor.User!.Id,
+                    Name = doctor.User.Name,
+                    Email = doctor.User.Email
+                }
+            }).ToList();
         }
     }
 }
