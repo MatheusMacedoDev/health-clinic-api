@@ -26,7 +26,7 @@ namespace webapi.health.clinic.Repositories
 
         public MedicalSpecialty GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.MedicalSpecialties.FirstOrDefault(specialty => specialty.Id == id)!;
         }
 
         public List<MedicalSpecialty> ListAll()

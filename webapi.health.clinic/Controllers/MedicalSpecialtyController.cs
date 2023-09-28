@@ -46,5 +46,20 @@ namespace webapi.health.clinic.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                MedicalSpecialty medicalSpecialty = _medicalSpecialtyRepository.GetById(id);
+
+                return Ok(medicalSpecialty);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }
