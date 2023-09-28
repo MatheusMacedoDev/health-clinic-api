@@ -21,7 +21,13 @@ namespace webapi.health.clinic.Repositories
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            MedicalSpecialty findedMedicalSpecialty = GetById(id);
+
+            if (findedMedicalSpecialty != null)
+            {
+                _context.MedicalSpecialties.Remove(findedMedicalSpecialty);
+                _context.SaveChanges();
+            }
         }
 
         public MedicalSpecialty GetById(Guid id)
