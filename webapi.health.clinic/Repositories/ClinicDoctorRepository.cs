@@ -20,13 +20,19 @@ namespace webapi.health.clinic.Repositories
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            ClinicDoctor findedClinicDoctor = _context.ClinicDoctors.FirstOrDefault(clinicDoctor => clinicDoctor.Id == id)!;
+
+            if (findedClinicDoctor != null)
+            {
+                _context.ClinicDoctors.Remove(findedClinicDoctor);
+                _context.SaveChanges();
+            }
         }
 
-        public List<ClinicDoctor> GetDoctorsByClinic(Guid doctorId)
+        public List<ClinicDoctor> GetDoctorsByClinic(Guid clinicId)
         {
             return _context.ClinicDoctors
-                .Where(clinicDoctor => clinicDoctor.DoctorId == doctorId)
+                .Where(clinicDoctor => clinicDoctor.ClinicId == clinicId)
                 .Select(clinicDoctor => new ClinicDoctor
                 {
                     Id = clinicDoctor.Id,
@@ -41,14 +47,14 @@ namespace webapi.health.clinic.Repositories
                     },
                     Clinic = new Clinic
                     {
-                        Id = clinicDoctor.Clinic.Id,
+                        Id = clinicDoctor.Clinic!.Id,
                         FancyName = clinicDoctor.Clinic.FancyName,
                         CompanyName = clinicDoctor.Clinic.CompanyName,
                         OpeningTime = clinicDoctor.Clinic.OpeningTime,
                         ClosingTime = clinicDoctor.Clinic.ClosingTime,
                         Address = new Address
                         {
-                            Id = clinicDoctor.Clinic.Address.Id,
+                            Id = clinicDoctor.Clinic.Address!.Id,
                             Cep = clinicDoctor.Clinic.Address.Cep,
                             Number = clinicDoctor.Clinic.Address.Number
                         }
