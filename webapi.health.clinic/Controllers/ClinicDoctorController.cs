@@ -30,5 +30,20 @@ namespace webapi.health.clinic.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpGet]
+        public IActionResult GetDoctorByClinic(Guid clinicId)
+        {
+            try
+            {
+                List<ClinicDoctor> clinicDoctors = _clinicDoctorRepository.GetDoctorsByClinic(clinicId);
+
+                return Ok(clinicDoctors);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }

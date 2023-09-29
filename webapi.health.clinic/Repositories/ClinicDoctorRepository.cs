@@ -23,9 +23,38 @@ namespace webapi.health.clinic.Repositories
             throw new NotImplementedException();
         }
 
-        public List<ClinicDoctor> ListDoctorsByClinic()
+        public List<ClinicDoctor> GetDoctorsByClinic(Guid doctorId)
         {
-            throw new NotImplementedException();
+            return _context.ClinicDoctors
+                .Where(clinicDoctor => clinicDoctor.DoctorId == doctorId)
+                .Select(clinicDoctor => new ClinicDoctor
+                {
+                    Id = clinicDoctor.Id,
+                    Doctor = new Doctor
+                    {
+                        Id = clinicDoctor.Doctor!.Id,
+                        User = new User
+                        {
+                            Id = clinicDoctor.Doctor.User!.Id,
+                            Name = clinicDoctor.Doctor.User.Name
+                        }
+                    },
+                    Clinic = new Clinic
+                    {
+                        Id = clinicDoctor.Clinic.Id,
+                        FancyName = clinicDoctor.Clinic.FancyName,
+                        CompanyName = clinicDoctor.Clinic.CompanyName,
+                        OpeningTime = clinicDoctor.Clinic.OpeningTime,
+                        ClosingTime = clinicDoctor.Clinic.ClosingTime,
+                        Address = new Address
+                        {
+                            Id = clinicDoctor.Clinic.Address.Id,
+                            Cep = clinicDoctor.Clinic.Address.Cep,
+                            Number = clinicDoctor.Clinic.Address.Number
+                        }
+
+                    }
+                }).ToList();
         }
     }
 }

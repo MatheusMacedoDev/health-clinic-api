@@ -5,7 +5,7 @@ namespace webapi.health.clinic.Repositories
     public interface IClinicDoctorRepository
     {
         void Create(ClinicDoctor clinicDoctor);
-        List<ClinicDoctor> ListDoctorsByClinic();
+        List<ClinicDoctor> GetDoctorsByClinic(Guid doctorId);
         void Delete(Guid id);
     }
 }
