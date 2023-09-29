@@ -26,7 +26,27 @@ namespace webapi.health.clinic.Repositories
 
         public List<DoctorMedicalSpecialty> GetSpecialtiesByDoctor(Guid doctorId)
         {
-            throw new NotImplementedException();
+            return _context.DoctorMedicalSpecialties
+                .Where(dm => dm.DoctorId == doctorId)
+                .Select(dm => new DoctorMedicalSpecialty
+                {
+                    Id = dm.Id,
+                    Doctor = new Doctor
+                    {
+                        Id = dm.Doctor!.Id,
+                        User = new User
+                        {
+                            Id = dm.Doctor.User!.Id,
+                            Name = dm.Doctor.User.Name
+                        }
+                    },
+                    MedicalSpecialty = new MedicalSpecialty
+                    {
+                        Id = dm.MedicalSpecialty!.Id,
+                        Name = dm.MedicalSpecialty.Name
+                    }
+                })
+                .ToList();
         }
     }
 }
