@@ -2,6 +2,7 @@
 using webapi.health.clinic.Domains;
 using webapi.health.clinic.Interfaces;
 using webapi.health.clinic.Repositories;
+using webapi.health.clinic.ViewModels;
 
 namespace webapi.health.clinic.Controllers
 {
@@ -10,21 +11,42 @@ namespace webapi.health.clinic.Controllers
     [Produces("application/json")]
     public class PatientController : ControllerBase
     {
+        private readonly IAddressRepository _addressRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IPatientRepository _patientRepository;
+        private readonly IClinicPatientRepository _clinicPatientRepository;
 
         public PatientController()
         {
+            _addressRepository = new AddressRepository();
+            _userRepository = new UserRepository();
             _patientRepository = new PatientRepository();
+            _clinicPatientRepository = new ClinicPatientRepository();
         }
 
         [HttpPost]
-        public IActionResult Create(Patient patient)
+        public IActionResult Create(PatientViewModel data)
         {
             try
             {
+                _addressRepository.Create(data.Address!);
+
+                data.User!.AddressId = data.Address.Id;
+
+                _userRepository.Register(data.User!);
+
+                Patient patient = new Patient()
+                {
+                    UserId = data.User!.Id,
+                };
+
                 _patientRepository.Create(patient);
 
-                return Ok(patient);
+                data.ClinicPatient!.PatientId = patient.Id;
+
+                _clinicPatientRepository.Create(data.ClinicPatient!);
+
+                return Ok(data);
             }
             catch (Exception err)
             {
