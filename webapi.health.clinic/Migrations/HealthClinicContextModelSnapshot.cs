@@ -57,7 +57,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.Clinic", b =>
@@ -87,7 +87,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Clinics");
+                    b.ToTable("Clinics", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.ClinicDoctor", b =>
@@ -108,7 +108,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("ClinicDoctors");
+                    b.ToTable("ClinicDoctors", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.ClinicPatient", b =>
@@ -129,7 +129,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("ClinicPatients");
+                    b.ToTable("ClinicPatients", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.Doctor", b =>
@@ -152,7 +152,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.DoctorMedicalSpecialty", b =>
@@ -173,7 +173,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasIndex("MedicalSpecialtyId");
 
-                    b.ToTable("DoctorMedicalSpecialties");
+                    b.ToTable("DoctorMedicalSpecialties", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.MedicalSpecialty", b =>
@@ -191,7 +191,7 @@ namespace webapi.health.clinic.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("MedicalSpecialties");
+                    b.ToTable("MedicalSpecialties", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.Patient", b =>
@@ -207,7 +207,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.User", b =>
@@ -253,7 +253,7 @@ namespace webapi.health.clinic.Migrations
 
                     b.HasIndex("UserTypeId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.UserType", b =>
@@ -271,7 +271,7 @@ namespace webapi.health.clinic.Migrations
                     b.HasIndex("TypeName")
                         .IsUnique();
 
-                    b.ToTable("UserTypes");
+                    b.ToTable("UserTypes", (string)null);
                 });
 
             modelBuilder.Entity("webapi.health.clinic.Domains.Clinic", b =>
