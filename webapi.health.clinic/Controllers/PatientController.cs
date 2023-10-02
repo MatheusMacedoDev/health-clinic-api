@@ -29,15 +29,15 @@ namespace webapi.health.clinic.Controllers
         {
             try
             {
-                _addressRepository.Create(data.Address!);
+                _addressRepository.Create(data.UserViewModel!.Address!);
 
-                data.User!.AddressId = data.Address.Id;
+                data.UserViewModel!.User!.AddressId = data.UserViewModel.Address!.Id;
 
-                _userRepository.Register(data.User!);
+                _userRepository.Register(data.UserViewModel!.User!);
 
                 Patient patient = new Patient()
                 {
-                    UserId = data.User!.Id,
+                    UserId = data.UserViewModel!.User.Id,
                 };
 
                 _patientRepository.Create(patient);
