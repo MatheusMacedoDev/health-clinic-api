@@ -1,4 +1,5 @@
-﻿using webapi.health.clinic.Contexts;
+﻿using Microsoft.IdentityModel.Tokens;
+using webapi.health.clinic.Contexts;
 using webapi.health.clinic.Domains;
 using webapi.health.clinic.Interfaces;
 
@@ -54,6 +55,24 @@ namespace webapi.health.clinic.Repositories
             {
                 _context.ClinicPatients.Remove(findedClinicPatient);
                 _context.SaveChanges();
+            }
+        }
+
+        public void DeleteAllByPatient(Guid PatientId)
+        {
+            try
+            {
+                List<ClinicPatient> findedClinicPatients = _context.ClinicPatients.Where(cp => cp.PatientId == PatientId).ToList();
+
+                if (findedClinicPatients.IsNullOrEmpty())
+                {
+                    _context.ClinicPatients.RemoveRange(findedClinicPatients);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

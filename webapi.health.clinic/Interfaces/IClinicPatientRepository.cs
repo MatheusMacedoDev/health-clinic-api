@@ -6,6 +6,7 @@ namespace webapi.health.clinic.Interfaces
     {
         void Create(ClinicPatient clinicPatient);
         List<ClinicPatient> GetPatientsByClinic(Guid clinicId);
+        void DeleteAllByPatient(Guid PatientId);
         void Delete(Guid id);
     }
 }

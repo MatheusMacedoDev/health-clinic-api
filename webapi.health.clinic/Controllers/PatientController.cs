@@ -74,6 +74,7 @@ namespace webapi.health.clinic.Controllers
         {
             try
             {
+                _clinicPatientRepository.DeleteAllByPatient(id);
                 _patientRepository.Delete(id);
 
                 return NoContent();
