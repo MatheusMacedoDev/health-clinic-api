@@ -69,6 +69,21 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        [HttpGet("{clinicId}")]
+        public IActionResult GetPatientsByClinic(Guid clinicId)
+        {
+            try
+            {
+                List<ClinicPatient> clinicPatients = _clinicPatientRepository.GetPatientsByClinic(clinicId);
+
+                return Ok(clinicPatients);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
         [HttpDelete]
         public IActionResult Delete(Guid id)
         {
