@@ -47,12 +47,27 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
-        [HttpGet("{pacientId}")]
+        [HttpGet("GetByPatient/{pacientId}")]
         public IActionResult GetConsultationByPatient(Guid pacientId)
         {
             try
             {
                 List<Consultation> consultations = _consultationRepository.GetConsultationByPatient(pacientId);
+
+                return Ok(consultations);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpGet("GetByDoctor/{doctorId}")]
+        public IActionResult GetConsultationByDoctor(Guid doctorId)
+        {
+            try
+            {
+                List<Consultation> consultations = _consultationRepository.GetConsultationByDoctor(doctorId);
 
                 return Ok(consultations);
             }

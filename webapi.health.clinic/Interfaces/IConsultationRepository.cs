@@ -7,7 +7,7 @@ namespace webapi.health.clinic.Interfaces
         void Create(Consultation consultation);
         List<Consultation> ListAll();
         List<Consultation> GetConsultationByPatient(Guid pacientId);
-        List<Consultation> GetConsultationByDoctor();
+        List<Consultation> GetConsultationByDoctor(Guid doctorId);
         Consultation GetById();
         void Update(Consultation consultation);
         void Delete(Guid id);
