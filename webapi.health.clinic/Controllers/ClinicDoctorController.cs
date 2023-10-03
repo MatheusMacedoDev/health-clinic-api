@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using webapi.health.clinic.Domains;
+using webapi.health.clinic.Interfaces;
 using webapi.health.clinic.Repositories;
 
 namespace webapi.health.clinic.Controllers

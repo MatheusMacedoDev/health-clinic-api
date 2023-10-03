@@ -1,5 +1,6 @@
 ﻿using webapi.health.clinic.Contexts;
 using webapi.health.clinic.Domains;
+using webapi.health.clinic.Interfaces;
 
 namespace webapi.health.clinic.Repositories
 {

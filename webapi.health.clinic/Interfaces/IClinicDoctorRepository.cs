@@ -1,6 +1,6 @@
 ﻿using webapi.health.clinic.Domains;
 
-namespace webapi.health.clinic.Repositories
+namespace webapi.health.clinic.Interfaces
 {
     public interface IClinicDoctorRepository
     {
