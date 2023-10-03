@@ -213,7 +213,21 @@ namespace webapi.health.clinic.Repositories
 
         public void Update(Consultation consultation)
         {
-            throw new NotImplementedException();
+            Consultation findedConsultation = _context.Consultations.FirstOrDefault(c => c.Id == consultation.Id)!;
+
+            if (findedConsultation != null)
+            {
+                findedConsultation.Date = consultation.Date;
+                findedConsultation.Time = consultation.Time;
+                findedConsultation.ClinicId = consultation.ClinicId;
+                findedConsultation.PatientId = consultation.PatientId;
+                findedConsultation.DoctorMedicalSpecialtyId = consultation.DoctorMedicalSpecialtyId;
+                findedConsultation.MedicalRecordId = consultation.MedicalRecordId;
+                findedConsultation.ConsultationStatusId = findedConsultation.ConsultationStatusId;
+
+                _context.Consultations.Update(findedConsultation);
+                _context.SaveChanges();
+            }
         }
     }
 }
