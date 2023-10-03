@@ -21,7 +21,13 @@ namespace webapi.health.clinic.Repositories
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            Consultation findedConsultation = _context.Consultations.FirstOrDefault(consultation => consultation.Id == id)!;
+
+            if (findedConsultation != null)
+            {
+                _context.Consultations.Remove(findedConsultation);
+                _context.SaveChanges();
+            }
         }
 
         public Consultation GetById(Guid id)
