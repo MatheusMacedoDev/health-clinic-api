@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 
 namespace webapi.health.clinic.Domains
 {
@@ -42,7 +43,7 @@ namespace webapi.health.clinic.Domains
         public DoctorMedicalSpecialty? DoctorMedicalSpecialty { get; set; }
 
         // Medical Record Reference
-        public Guid MedicalRecordId { get; set; }
+        public Guid? MedicalRecordId { get; set; }
 
         [ForeignKey(nameof(MedicalRecordId))]
         public MedicalRecord? MedicalRecord { get; set; }
