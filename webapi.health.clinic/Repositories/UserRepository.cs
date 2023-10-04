@@ -43,7 +43,7 @@ namespace webapi.health.clinic.Repositories
 
             if (findedUser != null)
             {
-                if (findedUser.Password == password)
+                if (Cryptography.VerifyHash(password, findedUser.Salt!, findedUser.Password!))
                 {
                     return findedUser;
                 }
