@@ -40,7 +40,17 @@ namespace webapi.health.clinic.Repositories
 
         public User GetByEmailAndPassword(string email, string password)
         {
-            User findedUser = _context.Users.FirstOrDefault(user => user.Email == email)!;
+            User findedUser = _context.Users.Select(user => new User
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password,
+                Salt = user.Salt,
+                UserType = new UserType { 
+                    TypeName = user.UserType!.TypeName
+                },
+            }).FirstOrDefault(user => user.Email == email)!;
 
             if (findedUser != null)
             {
