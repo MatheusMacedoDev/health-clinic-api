@@ -2,6 +2,7 @@
 using webapi.health.clinic.Domains;
 using webapi.health.clinic.Interfaces;
 using webapi.health.clinic.Repositories;
+using webapi.health.clinic.ViewModels;
 
 namespace webapi.health.clinic.Controllers
 {
@@ -18,13 +19,13 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(User user)
+        public IActionResult Register(UserRegisterViewModel data)
         {
             try
             {
-                _userRepository.Register(user);
+                _userRepository.Register(data);
 
-                return StatusCode(201, user);
+                return StatusCode(201, data);
             }
             catch (Exception err)
             {
