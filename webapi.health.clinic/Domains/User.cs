@@ -19,10 +19,15 @@ namespace webapi.health.clinic.Domains
         [Required(ErrorMessage = "O e-mail do usuário é um item obrigatório", AllowEmptyStrings = false)]
         public string? Email { get; set; }
 
-        [Column(TypeName = "CHAR(60)")]
-        [Required(ErrorMessage = "A senha do usuário é obrigatória", AllowEmptyStrings = false)]
-        [MinLength(8)]
-        public string? Password { get; set; }
+        [Column(TypeName = "BINARY(32)")]
+        [Required(ErrorMessage = "A senha do usuário é obrigatória")]
+        [MinLength(32)]
+        public byte[]? Password { get; set; }
+
+        [Column(TypeName = "BINARY(16)")]
+        [Required(ErrorMessage = "O salt da senha do usuário é obrigatório")]
+        [MinLength(16)]
+        public byte[]? Salt { get; set; }
 
         [Column(TypeName = "DATE")]
         [Required(ErrorMessage = "A data de nascimento do usuário é obrigatório")]

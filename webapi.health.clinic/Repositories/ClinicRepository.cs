@@ -40,7 +40,7 @@ namespace webapi.health.clinic.Repositories
                 ClosingTime = clinic.ClosingTime,
                 Address = new Address
                 {
-                    Id = clinic.Address.Id,
+                    Id = clinic.Address!.Id,
                     Cep = clinic.Address.Cep,
                     Number = clinic.Address.Number
                 }

@@ -30,7 +30,7 @@ namespace webapi.health.clinic.Repositories
                     Clinic = new Clinic
                     {
                         Id = clinicPatient.ClinicId,
-                        FancyName = clinicPatient.Clinic.FancyName
+                        FancyName = clinicPatient.Clinic!.FancyName
                     },
                     PatientId = clinicPatient.PatientId,
                     Patient = new Patient
@@ -38,7 +38,7 @@ namespace webapi.health.clinic.Repositories
                         Id = clinicPatient.Patient!.Id,
                         User = new User()
                         {
-                            Id = clinicPatient.Patient.User.Id,
+                            Id = clinicPatient.Patient.User!.Id,
                             Name = clinicPatient.Patient.User.Name
                         }
                     }
