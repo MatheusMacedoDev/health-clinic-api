@@ -4,6 +4,9 @@ namespace webapi.health.clinic.ViewModels
 {
     public class UserRegisterViewModel
     {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
+
         [Required(ErrorMessage = "O nome do usuário é um item obrigatório", AllowEmptyStrings = false)]
         public string? Name { get; set; }
 

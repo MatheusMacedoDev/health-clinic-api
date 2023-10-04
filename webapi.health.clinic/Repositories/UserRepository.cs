@@ -22,6 +22,7 @@ namespace webapi.health.clinic.Repositories
 
             User user = new User
             {
+                Id = data.Id,
                 Name = data.Name,
                 Email = data.Email,
                 Password = password,
@@ -64,7 +65,7 @@ namespace webapi.health.clinic.Repositories
                 SomeonePhoneNumber = user.SomeonePhoneNumber,
                 UserType = new UserType
                 {
-                    TypeName = user.UserType.TypeName
+                    TypeName = user.UserType!.TypeName
                 }
             }).ToList();
         }

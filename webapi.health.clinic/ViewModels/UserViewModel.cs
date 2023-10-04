@@ -9,6 +9,6 @@ namespace webapi.health.clinic.ViewModels
         public Address? Address { get; set; }
 
         [Required(ErrorMessage = "Os dados do usuário são obrigatórios!")]
-        public User? User { get; set; }
+        public UserRegisterViewModel? User { get; set; }
     }
 }
