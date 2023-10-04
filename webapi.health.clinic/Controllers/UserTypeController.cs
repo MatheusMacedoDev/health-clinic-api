@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using webapi.health.clinic.Domains;
 using webapi.health.clinic.Interfaces;
 using webapi.health.clinic.Repositories;
@@ -8,6 +9,7 @@ namespace webapi.health.clinic.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    //[Authorize(Roles = "Administrador")]
     public class UserTypeController : ControllerBase
     {
         private readonly IUserTypeRepository _userTypeRepository;

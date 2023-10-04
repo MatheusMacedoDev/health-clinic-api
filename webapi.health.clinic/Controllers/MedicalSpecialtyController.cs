@@ -8,6 +8,7 @@ namespace webapi.health.clinic.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    //[Authorize(Roles = "Administrador")]
     public class MedicalSpecialtyController : ControllerBase
     {
         private readonly IMedicalSpecialtyRepository _medicalSpecialtyRepository;

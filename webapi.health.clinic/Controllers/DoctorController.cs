@@ -9,6 +9,7 @@ namespace webapi.health.clinic.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    //[Authorize(Roles = "Administrador")]
     public class DoctorController : ControllerBase
     {
         private readonly IAddressRepository _addressRepository;

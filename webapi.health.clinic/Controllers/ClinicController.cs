@@ -8,6 +8,7 @@ namespace webapi.health.clinic.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    //[Authorize]
     public class ClinicController : ControllerBase
     {
         private readonly IClinicRepository _clinicRepository;
@@ -18,6 +19,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Create(Clinic clinic)
         {
             try
@@ -63,6 +65,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpDelete]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try
@@ -78,6 +81,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpPut]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Update(Clinic clinic)
         {
             try

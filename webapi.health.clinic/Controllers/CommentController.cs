@@ -8,6 +8,7 @@ namespace webapi.health.clinic.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    //[Authorize]
     public class CommentController : ControllerBase
     {
         private readonly ICommentRepository _commentRepository;
@@ -18,6 +19,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpPost]
+        //[Authorize(Roles = "Paciente")]
         public IActionResult Create(Comment comment)
         {
             try
@@ -48,6 +50,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpDelete("{id}")]
+        //[Authorize(Roles = "Paciente")]
         public IActionResult Delete(Guid id)
         {
             try

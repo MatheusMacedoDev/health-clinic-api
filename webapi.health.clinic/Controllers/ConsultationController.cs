@@ -8,6 +8,7 @@ namespace webapi.health.clinic.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    //[Authorize]
     public class ConsultationController : ControllerBase
     {
         private readonly IConsultationRepository _consultationRepository;
@@ -18,6 +19,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Create(Consultation consultation)
         {
             try
@@ -33,6 +35,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpGet]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult ListAll()
         {
             try
@@ -48,6 +51,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpGet("GetByPatient/{pacientId}")]
+        //[Authorize(Roles = "Paciente")]
         public IActionResult GetConsultationByPatient(Guid pacientId)
         {
             try
@@ -63,6 +67,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpGet("GetByDoctor/{doctorId}")]
+        //[Authorize(Roles = "Médico")]
         public IActionResult GetConsultationByDoctor(Guid doctorId)
         {
             try
@@ -93,6 +98,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpPut]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Update(Consultation consultation)
         {
             try
@@ -108,6 +114,7 @@ namespace webapi.health.clinic.Controllers
         }
 
         [HttpDelete]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try
