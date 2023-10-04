@@ -18,6 +18,11 @@ namespace webapi.health.clinic.Controllers
             _clinicRepository = new ClinicRepository();
         }
 
+        /// <summary>
+        /// Endpoint que lida com a criação de um determinada clínica
+        /// </summary>
+        /// <param name="clinic">Objeto da clínica</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         //[Authorize(Roles = "Administrador")]
         public IActionResult Create(Clinic clinic)
@@ -34,6 +39,10 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Lista todas as clínicas
+        /// </summary>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpGet]
         public IActionResult ListAll()
         {
@@ -49,6 +58,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que recebe os dados de uma clínica específica
+        /// </summary>
+        /// <param name="id">Id da clínica</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
@@ -64,6 +78,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que remove uma clínica
+        /// </summary>
+        /// <param name="id">Id da clínica</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpDelete]
         //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
@@ -80,6 +99,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que atualiza os dados de uma clínica
+        /// </summary>
+        /// <param name="clinic">Dados da clínica</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPut]
         //[Authorize(Roles = "Administrador")]
         public IActionResult Update(Clinic clinic)

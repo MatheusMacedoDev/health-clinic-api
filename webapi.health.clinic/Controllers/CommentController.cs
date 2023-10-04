@@ -18,6 +18,11 @@ namespace webapi.health.clinic.Controllers
             _commentRepository = new CommentRepository();
         }
 
+        /// <summary>
+        /// Endpoint que cria um comentário
+        /// </summary>
+        /// <param name="comment">Objeto do comentário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         //[Authorize(Roles = "Paciente")]
         public IActionResult Create(Comment comment)

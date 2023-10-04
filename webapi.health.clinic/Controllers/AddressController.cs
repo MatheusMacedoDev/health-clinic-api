@@ -18,6 +18,11 @@ namespace webapi.health.clinic.Controllers
             _addressRepository = new AddressRepository();
         }
 
+        /// <summary>
+        /// Endpoint que lida com a criação de um determinado endereço
+        /// </summary>
+        /// <param name="address">Objeto de endereço</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         public IActionResult Create(Address address)
         {

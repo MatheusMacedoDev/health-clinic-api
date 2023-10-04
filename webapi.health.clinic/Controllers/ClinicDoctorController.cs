@@ -32,6 +32,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que recebe todos os médicos de uma clínica
+        /// </summary>
+        /// <param name="clinicId">Id da clínica</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpGet]
         public IActionResult GetDoctorByClinic(Guid clinicId)
         {
