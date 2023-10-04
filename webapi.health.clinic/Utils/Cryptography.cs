@@ -13,7 +13,7 @@ namespace webapi.health.clinic.Utils
         private static int DegreeOfParallelism = 1;
         private static int Iterations = 2;
         private static int MemorySize = 1024 * 20;
-        private static int HashSize = 48;
+        private static int HashSize = 32;
 
         /// <summary>
         /// Create a salt for be added to a hash

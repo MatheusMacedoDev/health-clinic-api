@@ -1,6 +1,8 @@
 ﻿using webapi.health.clinic.Contexts;
 using webapi.health.clinic.Domains;
 using webapi.health.clinic.Interfaces;
+using webapi.health.clinic.Utils;
+using webapi.health.clinic.ViewModels;
 
 namespace webapi.health.clinic.Repositories
 {
@@ -13,8 +15,24 @@ namespace webapi.health.clinic.Repositories
             _context = new HealthClinicContext();
         }
 
-        public void Register(User user)
+        public void Register(UserRegisterViewModel data)
         {
+            byte[] salt = Cryptography.CreateSalt();
+            byte[] password = Cryptography.HashPassword(data.Password!, salt);
+
+            User user = new User
+            {
+                Name = data.Name,
+                Email = data.Email,
+                Password = password,
+                Salt = salt,
+                BirthDate = data.BirthDate,
+                PhoneNumber = data.PhoneNumber,
+                SomeonePhoneNumber = data.SomeonePhoneNumber,
+                UserTypeId = data.UserTypeId,
+                AddressId = data.AddressId
+            };
+
             _context.Users.Add(user);
             _context.SaveChanges();
         }
