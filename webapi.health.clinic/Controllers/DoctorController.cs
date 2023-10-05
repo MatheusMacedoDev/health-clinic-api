@@ -6,6 +6,9 @@ using webapi.health.clinic.ViewModels;
 
 namespace webapi.health.clinic.Controllers
 {
+    /// <summary>
+    /// Controlador dos médicos
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -17,6 +20,10 @@ namespace webapi.health.clinic.Controllers
         private readonly IClinicDoctorRepository _clinicDoctorRepository;
         private readonly IDoctorMedicalSpecialtyRepository _doctorMedicalSpecialtyRepository;
         private readonly IDoctorRepository _doctorRepository;
+
+        /// <summary>
+        /// Construtor do controlador dos médicos
+        /// </summary>
         public DoctorController()
         {
             _addressRepository = new AddressRepository();
@@ -26,6 +33,11 @@ namespace webapi.health.clinic.Controllers
             _doctorRepository = new DoctorRepository();
         }
 
+        /// <summary>
+        /// Endpoint que cria um novo médico com todos dados necessários
+        /// </summary>
+        /// <param name="data">Dados do médico</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         public IActionResult Create(DoctorViewModel data)
         {
@@ -61,6 +73,10 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que lista todos os médicos
+        /// </summary>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpGet]
         public IActionResult ListAll()
         {
@@ -76,6 +92,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que remove um médico específico
+        /// </summary>
+        /// <param name="id">Id do médico</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {

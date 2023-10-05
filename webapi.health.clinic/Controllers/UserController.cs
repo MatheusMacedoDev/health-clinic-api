@@ -6,6 +6,9 @@ using webapi.health.clinic.ViewModels;
 
 namespace webapi.health.clinic.Controllers
 {
+    /// <summary>
+    /// Controlador do usuário
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -14,11 +17,19 @@ namespace webapi.health.clinic.Controllers
     {
         private readonly IUserRepository _userRepository;
 
+        /// <summary>
+        /// Construtor do controlador do usuário
+        /// </summary>
         public UserController()
         {
             _userRepository = new UserRepository();
         }
 
+        /// <summary>
+        /// Endpoint que registra um novo usuário
+        /// </summary>
+        /// <param name="data">Dados do usuário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         public IActionResult Register(UserRegisterViewModel data)
         {
@@ -34,6 +45,10 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que lista todos os usuários
+        /// </summary>
+        /// <returns>Resposta HTTP ao usuário contendo uma lista de usuários</returns>
         [HttpGet] 
         public IActionResult ListAll()
         {
@@ -49,6 +64,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que remove um usuário
+        /// </summary>
+        /// <param name="id">Id do usuário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {

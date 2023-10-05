@@ -5,6 +5,9 @@ using webapi.health.clinic.Repositories;
 
 namespace webapi.health.clinic.Controllers
 {
+    /// <summary>
+    /// Controlador dos estados das consultas
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -13,11 +16,19 @@ namespace webapi.health.clinic.Controllers
     {
         private readonly IConsultationStatusRepository _consultationStatusRepository;
 
+        /// <summary>
+        /// Construtor do controlador dos estados das consultas
+        /// </summary>
         public ConsultationStatusController()
         {
             _consultationStatusRepository = new ConsultationStatusRepository();
         }
 
+        /// <summary>
+        /// Endpoint que cria um novo estado para as consultas
+        /// </summary>
+        /// <param name="consultationStatus">Objeto de estado da consulta</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         public IActionResult Create(ConsultationStatus consultationStatus)
         {
@@ -33,6 +44,10 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que lista todos os estados das consultas
+        /// </summary>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpGet]
         public IActionResult ListAll()
         {
@@ -48,6 +63,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que remove um estado de consulta específico
+        /// </summary>
+        /// <param name="id">Id do estado de consulta</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {

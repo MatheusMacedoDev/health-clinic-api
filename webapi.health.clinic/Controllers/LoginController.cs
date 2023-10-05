@@ -9,6 +9,9 @@ using webapi.health.clinic.ViewModels;
 
 namespace webapi.health.clinic.Controllers
 {
+    /// <summary>
+    /// Controlador do login
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -16,11 +19,19 @@ namespace webapi.health.clinic.Controllers
     {
         private readonly IUserRepository _userRepository;
 
+        /// <summary>
+        /// Construtor do controlador do login
+        /// </summary>
         public LoginController()
         {
             _userRepository = new UserRepository();
         }
 
+        /// <summary>
+        /// Endpoint que verifica os dados e loga um usuário
+        /// </summary>
+        /// <param name="data">Dados de login</param>
+        /// <returns>Resposta HTTP ao usuário contendo um token de login</returns>
         [HttpPost]
         public IActionResult Login(LoginViewModel data)
         {

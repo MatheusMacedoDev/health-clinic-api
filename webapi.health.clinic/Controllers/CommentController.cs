@@ -5,6 +5,9 @@ using webapi.health.clinic.Repositories;
 
 namespace webapi.health.clinic.Controllers
 {
+    /// <summary>
+    /// Controlador dos comentários
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -13,6 +16,9 @@ namespace webapi.health.clinic.Controllers
     {
         private readonly ICommentRepository _commentRepository;
 
+        /// <summary>
+        /// Construtor do CommentController
+        /// </summary>
         public CommentController()
         {
             _commentRepository = new CommentRepository();
@@ -39,6 +45,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que recebe os dados de todos comentários de uma consulta
+        /// </summary>
+        /// <param name="consultationId">Id da consulta</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpGet("{consultationId}")]
         public IActionResult GetByConsultation(Guid consultationId)
         {
@@ -54,6 +65,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que exclui um determinado comentário
+        /// </summary>
+        /// <param name="id">Id do comentário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpDelete("{id}")]
         //[Authorize(Roles = "Paciente")]
         public IActionResult Delete(Guid id)

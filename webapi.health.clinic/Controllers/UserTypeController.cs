@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using webapi.health.clinic.Domains;
 using webapi.health.clinic.Interfaces;
 using webapi.health.clinic.Repositories;
 
 namespace webapi.health.clinic.Controllers
 {
+    /// <summary>
+    /// Controlador dos tipos de usuário
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -14,11 +16,19 @@ namespace webapi.health.clinic.Controllers
     {
         private readonly IUserTypeRepository _userTypeRepository;
 
+        /// <summary>
+        /// Construtor dos tipos de usuário
+        /// </summary>
         public UserTypeController()
         {
             _userTypeRepository = new UserTypeRepository();
         }
 
+        /// <summary>
+        /// Endpoint que cria um novo tipo de usuário
+        /// </summary>
+        /// <param name="userType">Objeto do tipo de usuário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         public IActionResult Create(UserType userType)
         {
@@ -34,6 +44,10 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que lista todos os tipos de usuário
+        /// </summary>
+        /// <returns>Resposta HTTP ao usuário contendo uma lista de tipos de usuário</returns>
         [HttpGet]
         public IActionResult ListAll()
         {
@@ -49,6 +63,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que pega um tipo de usuário específico
+        /// </summary>
+        /// <param name="id">Id do tipo de usuário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
@@ -64,6 +83,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que remove um tipo de usuário
+        /// </summary>
+        /// <param name="id">Id do tipo de usuário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpDelete]
         public IActionResult Delete(Guid id)
         {
@@ -79,6 +103,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que atualiza os dados de um tipo de usuário
+        /// </summary>
+        /// <param name="userType">Dados do tipo de usuário</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPut]
         public IActionResult Update(UserType userType)
         {

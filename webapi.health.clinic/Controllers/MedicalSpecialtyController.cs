@@ -5,6 +5,9 @@ using webapi.health.clinic.Repositories;
 
 namespace webapi.health.clinic.Controllers
 {
+    /// <summary>
+    /// Controlador das especialidades médicas
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -13,11 +16,19 @@ namespace webapi.health.clinic.Controllers
     {
         private readonly IMedicalSpecialtyRepository _medicalSpecialtyRepository;
 
+        /// <summary>
+        /// Construtor do controlador das especialidades médicas
+        /// </summary>
         public MedicalSpecialtyController()
         {
             _medicalSpecialtyRepository = new MedicalSpecialtyRepository();
         }
 
+        /// <summary>
+        /// Endpoint que cria uma especialidade médica
+        /// </summary>
+        /// <param name="medicalSpecialty">Objeto da especialidade médica</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPost]
         public IActionResult Create(MedicalSpecialty medicalSpecialty)
         {
@@ -33,6 +44,10 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que lista todas as especialidades médicas
+        /// </summary>
+        /// <returns>Resposta HTTP ao usuário contendo a lista das especialidades</returns>
         [HttpGet]
         public IActionResult ListAll()
         {
@@ -48,6 +63,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que pega uma especialidade médica específica
+        /// </summary>
+        /// <param name="id">Id da especialidade médica</param>
+        /// <returns>Resposta HTTP ao usuário contendo os dados da especialidade</returns>
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
@@ -63,6 +83,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que remove uma especialidade médica
+        /// </summary>
+        /// <param name="id">Id da especialidade médica</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -78,6 +103,11 @@ namespace webapi.health.clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que atualiza os dados de uma especialidade médica
+        /// </summary>
+        /// <param name="medicalSpecialty">Dados da especialidade</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
         [HttpPut]
         public IActionResult Update(MedicalSpecialty medicalSpecialty)
         {
