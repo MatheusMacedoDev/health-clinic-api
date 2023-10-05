@@ -113,6 +113,26 @@ namespace webapi.health.clinic.Controllers
         }
 
         /// <summary>
+        /// Endpoint que retorna todas as especialidades de um determinado médico
+        /// </summary>
+        /// <param name="doctorId">Id do médico</param>
+        /// <returns>Resposta HTTP ao usuário</returns>
+        [HttpGet("SpecialtiesByDoctor/{doctorId}")]
+        public IActionResult GetSpecialtiesByDoctor(Guid doctorId)
+        {
+            try
+            {
+                List<DoctorMedicalSpecialty> doctorMedicalSpecialties = _doctorMedicalSpecialtyRepository.GetSpecialtiesByDoctor(doctorId);
+
+                return Ok(doctorMedicalSpecialties);
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
+        /// <summary>
         /// Endpoint que remove um médico específico
         /// </summary>
         /// <param name="id">Id do médico</param>
