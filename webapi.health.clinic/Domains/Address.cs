@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.health.clinic.Domains
 {
+    /// <summary>
+    /// Entidade de endereço
+    /// </summary>
     [Table("Addresses")]
     public class Address
     {

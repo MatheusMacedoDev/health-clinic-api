@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.health.clinic.Domains
 {
+    /// <summary>
+    /// Entidade que representa um usuário
+    /// </summary>
     [Table("Users")]
     [Index(nameof(Email), IsUnique = true)]
     public class User

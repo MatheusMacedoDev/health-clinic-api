@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.health.clinic.Domains
 {
+    /// <summary>
+    /// Entidade que representa um médico
+    /// </summary>
     [Table("Doctors")]
     [Index(nameof(CRM), IsUnique = true)]
     public class Doctor

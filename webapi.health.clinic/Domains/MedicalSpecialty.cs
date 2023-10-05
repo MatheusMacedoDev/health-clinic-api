@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.health.clinic.Domains
 {
+    /// <summary>
+    /// Entidade que representa uma especialidade médica
+    /// </summary>
     [Table("MedicalSpecialties")]
     [Index(nameof(Name), IsUnique = true)]
     public class MedicalSpecialty

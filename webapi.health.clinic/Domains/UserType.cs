@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.health.clinic.Domains
 {
+    /// <summary>
+    /// Entidade que representa um tipo de usuário
+    /// </summary>
     [Table("UserTypes")]
     [Index(nameof(TypeName), IsUnique = true)]
     public class UserType

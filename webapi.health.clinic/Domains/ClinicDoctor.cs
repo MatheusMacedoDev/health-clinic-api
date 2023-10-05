@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.health.clinic.Domains
 {
+    /// <summary>
+    /// Entidade que representa a relação entre os médicos e as clínicas
+    /// </summary>
     [Table("ClinicDoctors")]
     public class ClinicDoctor
     {
