@@ -12,7 +12,7 @@ namespace webapi.health.clinic.Domains
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Column(TypeName = "VARCHAR")]
+        [Column(TypeName = "VARCHAR(8000)")]
         [Required(ErrorMessage = "O prontuário deve conter alguma descrição", AllowEmptyStrings = false)]
         public string? Text { get; set; }
     }
