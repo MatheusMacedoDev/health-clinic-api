@@ -115,7 +115,7 @@ namespace webapi.health.clinic.Controllers
             {
                 _userTypeRepository.Update(userType);
 
-                return StatusCode(204, userType);
+                return StatusCode(200, userType);
             }
             catch (Exception err)
             {

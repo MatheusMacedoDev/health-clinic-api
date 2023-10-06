@@ -115,7 +115,7 @@ namespace webapi.health.clinic.Controllers
             {
                 _medicalSpecialtyRepository.Update(medicalSpecialty);
 
-                return StatusCode(204, medicalSpecialty);
+                return StatusCode(200, medicalSpecialty);
             }
             catch (Exception err)
             {

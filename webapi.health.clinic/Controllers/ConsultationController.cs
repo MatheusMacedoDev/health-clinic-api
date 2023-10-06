@@ -140,7 +140,7 @@ namespace webapi.health.clinic.Controllers
             {
                 _consultationRepository.Update(consultation);
 
-                return StatusCode(204, consultation);
+                return StatusCode(200, consultation);
             }
             catch (Exception err)
             {
